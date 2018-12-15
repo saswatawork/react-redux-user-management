@@ -20,7 +20,7 @@ export default class HomePage extends React.PureComponent {
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-between">
           <div>
-            <a class="navbar-brand" href="#">FE Code Challange</a>
+            <a className="navbar-brand" href="#">FE Code Challange</a>
           </div>
           <LoginForm />
         </nav>

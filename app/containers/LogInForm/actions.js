@@ -1,22 +1,13 @@
 /*
- * Home Actions
+ * Login Actions
  *
- * Actions change things in your application
- * Since this boilerplate uses a uni-directional data flow, specifically redux,
- * we have these actions which are the only way your application interacts with
- * your application state. This guarantees that your state is up to date and nobody
- * messes it up weirdly somewhere.
- *
- * To add a new Action:
- * 1) Import your constant
- * 2) Add a function like this:
- *    export function yourAction(var) {
- *        return { type: YOUR_ACTION_CONSTANT, var: var }
- *    }
  */
-
-import { LOGIN_REQUEST } from './constants';
-
+import { fromJS } from "immutable";
+import {
+  LOGIN_REQUEST,
+  LOGIN_REQUEST_SUCCESS,
+  LOGIN_REQUEST_FAIL
+} from './constants';
 /**
  * Changes the input field of the form
  *
@@ -24,9 +15,25 @@ import { LOGIN_REQUEST } from './constants';
  *
  * @return {object}    An action object with a type of CHANGE_USERNAME
  */
-export function doLogin(name) {
-  return {
-    type: LOGIN_REQUEST,
-    name,
-  };
+const actionCreators = {
+  loginRequest(payload) {
+    return {
+      type: LOGIN_REQUEST,
+      payload: fromJS(payload)
+    };
+  },
+  loginRequestSuccess(payload) {
+    return {
+      type: LOGIN_REQUEST_SUCCESS,
+      payload: fromJS(payload)
+    };
+  },
+  loginRequestFail(payload) {
+    return {
+      type: LOGIN_REQUEST_FAIL,
+      payload: fromJS(payload)
+    };
+  }
 }
+
+export default actionCreators;

@@ -14,7 +14,6 @@ import submit from './submit';
 import makeSelectLoginForm from "./selectors";
 import reducer from './reducer';
 import validate from './validate';
-import './style.css';
 // import saga from './saga';
 
 export class RegistrationForm extends React.PureComponent {
@@ -45,23 +44,22 @@ export class RegistrationForm extends React.PureComponent {
     } = this.props;
 
     return (
-        <div>
-          <div className="container">
-            <div className="row ">
-              <div class="col-6 mx-auto">
-                <form action="" id="loginForm">
-                  <Field name="firstname" component={Input} placeholder="firstname" />
-                  <Field name="lastname" component={Input} placeholder="lastname" />
-                  <Field name="email" component={Input} placeholder="email"/>
-                  <Field name="password" type="password" component={Input} placeholder="password"/>
-                  <div className="form-group">
-                    <button type="button" className="btn btn-primary btn-block">Join now</button>
-                  </div>
-                </form>
+      <div className="container">
+        <div className="row align-items-center h-100">
+          <div className="col-sm-4 mx-sm-auto my-auto">
+            <h4>Register here</h4>
+            <form action="" id="loginForm">
+              <Field name="firstname" component={Input} placeholder="First name" />
+              <Field name="lastname" component={Input} placeholder="Last name" />
+              <Field name="email" component={Input} placeholder="Email"/>
+              <Field name="password" type="password" component={Input} placeholder="password"/>
+              <div className="form-group">
+                <button type="button" className="btn btn-primary btn-block">Join now</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
+      </div>
     )
   }
 }

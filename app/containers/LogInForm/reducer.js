@@ -11,17 +11,25 @@
  */
 import { fromJS } from 'immutable';
 
-import { LOGIN_REQUEST } from './constants';
+import {
+  LOGIN_REQUEST,
+  LOGIN_REQUEST_SUCCESS,
+  LOGIN_REQUEST_FAIL
+} from './constants';
 
 // The initial state of the App
 export const initialState = fromJS({
-  username: '',
+  email: '',
   password: '',
+  isLoggedIn: false
 });
 
 function loginReducer(state = initialState, action) {
-  return state;
   switch (action.type) {
+    case LOGIN_REQUEST_SUCCESS:
+      return state.set("isLoggedIn", true);
+    case LOGIN_REQUEST_FAIL:
+      return state.set("isLoggedIn", false);
     default:
       return state;
   }

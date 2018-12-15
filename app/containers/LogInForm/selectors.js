@@ -2,16 +2,12 @@ import { createSelector, createStructuredSelector } from "reselect";
 
 const selectLogin = state => state.get('login');
 
-const makeSelectUsername = () =>
-  createSelector(selectLogin, loginState => loginState.get('username'));
-
-const makeSelectPassword = () =>
-  createSelector(selectLogin, loginState => loginState.get('password'));
+const makeSelectisLoggedIn = () =>
+  createSelector(selectLogin, loginState => loginState.get('isLoggedIn'));
 
 const makeSelectLoginForm = () =>
   createStructuredSelector({
-    username: makeSelectUsername(),
-    password: makeSelectPassword()
+    isLoggedIn: makeSelectisLoggedIn()
   });
 
 export default makeSelectLoginForm;

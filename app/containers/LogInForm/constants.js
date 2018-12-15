@@ -9,4 +9,6 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOGIN_REQUEST = 'app/LogInForm/LOGIN_REQUEST';
+ export const LOGIN_REQUEST = 'app/LogInForm/LOGIN_REQUEST';
+ export const LOGIN_REQUEST_SUCCESS = 'app/LogInForm/LOGIN_REQUEST_SUCCESS';
+ export const LOGIN_REQUEST_FAIL = 'app/LogInForm/LOGIN_REQUEST_FAIL';
