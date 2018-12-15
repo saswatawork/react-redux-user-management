@@ -10,16 +10,21 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import LoginForm from './../LoginForm';
+import RegistrationForm from './../RegistrationForm';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
   render() {
     return (
-      <div class="container">
-        <h1>
-          Welcome to FE code challange
-        </h1>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-between">
+          <div>
+            <a class="navbar-brand" href="#">FE Code Challange</a>
+          </div>
+          <LoginForm />
+        </nav>
+        <RegistrationForm />
       </div>
     );
   }

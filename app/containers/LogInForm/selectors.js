@@ -15,5 +15,3 @@ const makeSelectLoginForm = () =>
   });
 
 export default makeSelectLoginForm;
-
-export { selectFindBaggageFormDomain };

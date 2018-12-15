@@ -14,6 +14,7 @@ import submit from './submit';
 import makeSelectLoginForm from "./selectors";
 import reducer from './reducer';
 import validate from './validate';
+import './style.css';
 // import saga from './saga';
 
 export class LogInForm extends React.PureComponent {
@@ -30,7 +31,7 @@ export class LogInForm extends React.PureComponent {
     reset: _.noop,
     form: undefined
   };
-  
+
   render() {
     const {
       error,
@@ -44,45 +45,22 @@ export class LogInForm extends React.PureComponent {
     } = this.props;
 
     return (
-        <div>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-between">
-            <div>
-              <a class="navbar-brand" href="#">FE Code Challange</a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-            </div>
-
-            <div className="ml-auto" id="navbarSupportedContent">
-              <form className="form-inline my-2 my-lg-0">
-                <Field
-                  name="username"
-                  type="text"
-                  component={Input}
-                  placeholder="username"
-                  className="mr-sm-2"
-                />
-                <Field
-                  name="password"
-                  type="password"
-                  component={Input}
-                  placeholder="Password"
-                  className="mr-sm-2"
-                />
-                {error && (
-                  <span className="text-danger">
-                    <strong>{error}</strong>
-                  </span>
-                )}
-                <div className="form-group">
-                  <Button type="submit" className="btn btn-outline-light my-2 my-sm-0" disabled={submitting || error}>
-                    Log In
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </nav>
-        </div>
+      <div>
+        <form className="form-inline my-2 my-lg-0">
+          <Field name="username" component={Input} placeholder="username" className="mr-sm-2" />
+          <Field name="password" type="password" component={Input} placeholder="Password" className="mr-sm-2" />
+          {error && (
+            <span className="text-danger">
+              <strong>{error}</strong>
+            </span>
+          )}
+          <div className="form-group">
+            <Button type="submit" className="btn btn-outline-light my-2 my-sm-0" disabled={submitting || error}>
+              Log In
+            </Button>
+          </div>
+        </form>
+      </div>
     )
   }
 }
