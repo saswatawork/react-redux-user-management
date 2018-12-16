@@ -12,7 +12,6 @@ import Input from 'components/Form/Input';
 import Button from 'components/Button';
 import FormSection from 'components/FormSection';
 
-import submit from './submit';
 import makeSelectLoginForm from "./selectors";
 import actionCreators from "./actions";
 import reducer from './reducer';

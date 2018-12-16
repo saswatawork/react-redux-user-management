@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from "prop-types";
-import { Redirect } from 'react-router-dom';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -11,7 +10,6 @@ import bindActionCreators from "utils/bindActionCreators";
 import Input from 'components/Form/Input';
 import Button from 'components/Button';
 
-import submit from './submit';
 import makeSelectUser from "./selectors";
 import actionCreators from "./actions";
 import reducer from './reducer';
@@ -42,8 +40,6 @@ class EditUser extends React.PureComponent {
       userDetails,
       handleSubmit
     } = this.props;
-
-    console.log('this.props', this.props)
 
     return (
       <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -100,7 +96,5 @@ export default reduxForm({
   destroyOnUnmount: false,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true,
-  form: 'editUserForm',
-  // validate,
-  // onSubmit
+  form: 'editUserForm'
 })(EditUserConnect)

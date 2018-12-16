@@ -10,7 +10,6 @@ import Input from 'components/Form/Input';
 import Button from 'components/Button';
 import bindActionCreators from "utils/bindActionCreators";
 
-import submit from './submit';
 import makeSelectRegistrationForm from "./selectors";
 import actionCreators from "./actions";
 import reducer from './reducer';
@@ -20,7 +19,7 @@ import saga from './saga';
 export class RegistrationForm extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.shape({
-      // registrationRequest: PropTypes.func.isRequired
+      registrationRequest: PropTypes.func.isRequired
     }),
     handleSubmit: PropTypes.func
   };
@@ -37,11 +36,6 @@ export class RegistrationForm extends React.PureComponent {
       error,
       form,
       handleSubmit,
-      pristine,
-      reset,
-      submitting,
-      username,
-      password
     } = this.props;
 
     return (

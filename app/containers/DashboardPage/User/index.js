@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from "prop-types";
-import { Redirect } from 'react-router-dom';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -11,7 +10,6 @@ import bindActionCreators from "utils/bindActionCreators";
 import Pagination from 'components/Pagination';
 import Button from 'components/Button';
 
-import submit from './submit';
 import UserList from './userList';
 import EditUser from './editUser';
 import makeSelectUser from "./selectors";
