@@ -22,7 +22,7 @@ import saga from './saga';
 export class LogInForm extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.shape({
-      // TODO: list all actions here
+      loginRequest: PropTypes.func.isRequired
     }),
     handleSubmit: PropTypes.func
   };
@@ -78,8 +78,6 @@ export class LogInForm extends React.PureComponent {
             </form>
           </div>
         )}
-
-
       </div>
     )
   }
@@ -106,8 +104,6 @@ const LogInFormConnect = compose(
   withSaga,
   withConnect,
 )(LogInForm);
-
-
 
 export default reduxForm({
   destroyOnUnmount: false,
