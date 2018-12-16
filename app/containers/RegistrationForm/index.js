@@ -46,17 +46,21 @@ export class RegistrationForm extends React.PureComponent {
     return (
       <div className="container">
         <div className="row align-items-center h-100">
-          <div className="col-sm-4 mx-sm-auto my-auto">
-            <h4>Register here</h4>
-            <form action="" id="loginForm">
-              <Field name="firstname" component={Input} placeholder="First name" />
-              <Field name="lastname" component={Input} placeholder="Last name" />
-              <Field name="email" component={Input} placeholder="Email"/>
-              <Field name="password" type="password" component={Input} placeholder="password"/>
-              <div className="form-group">
-                <button type="button" className="btn btn-primary btn-block">Join now</button>
+          <div className="col-sm-5 mx-sm-auto mt-5 pt-5">
+            <div className="card">
+              <div className="card-header">
+                <h4>Registration</h4>
               </div>
-            </form>
+              <form action="" className="pt-4 pl-3 pr-5" id="loginForm">
+                <Field name="firstname" component={Input} placeholder="First name" />
+                <Field name="lastname" component={Input} placeholder="Last name" />
+                <Field name="email" component={Input} placeholder="Email"/>
+                <Field name="password" type="password" component={Input} placeholder="password"/>
+                <div className="form-group">
+                  <button type="button" className="btn btn-primary">Join now</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

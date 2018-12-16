@@ -62,15 +62,15 @@ export class LogInForm extends React.PureComponent {
           ) || (
           <div>
             {currentLocation!='/' && <Redirect to="/" /> }
-            <form onSubmit={handleSubmit} className="form-inline my-2 my-lg-0">
-              <Field name="email" component={Input} placeholder="Email" className="mr-sm-2" />
-              <Field name="password" type="password" component={Input} placeholder="Password" className="mr-sm-2" />
+            <form onSubmit={handleSubmit} className="row form-inline my-2 my-lg-0">
+              <Field name="email" component={Input} placeholder="Email" className="col-12 col-sm-5" />
+              <Field name="password" type="password" component={Input} placeholder="Password" className="col-12 col-sm-5" />
               {error && (
                 <span className="text-danger">
                   <strong>{error}</strong>
                 </span>
               )}
-              <div className="form-group">
+              <div className="form-group col-12 col-sm-2">
                 <Button type="submit" className="btn btn-outline-light my-2 my-sm-0">
                   Log In
                 </Button>
