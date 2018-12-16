@@ -52,11 +52,11 @@ export class RegistrationForm extends React.PureComponent {
               <div className="card-header">
                 <h4>Registration</h4>
               </div>
-              <form onSubmit={handleSubmit} className="pt-4 pl-3 pr-5" id="resistrationFrom" noValidate>
+              <form onSubmit={handleSubmit} className="pt-4 pl-3 pr-5" id="resistrationFrom">
                 <Field name="firstname" component={Input} placeholder="First name" />
                 <Field name="lastname" component={Input} placeholder="Last name" />
                 <Field name="email" component={Input} placeholder="Email"/>
-                <Field name="password" type="password" component={Input} placeholder="password"/>
+                <Field name="password" type="password" component={Input} placeholder="Password"/>
                 <div className="form-group">
                   <Button type="submit" className="btn btn-primary">Join Now</Button>
                 </div>

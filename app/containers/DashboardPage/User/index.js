@@ -50,12 +50,10 @@ export class User extends React.PureComponent {
       userDetails
     } = this.props;
 
-    console.log('this.props', this.props)
-
     return (
       <div className="p-5">
         <h4>User list</h4>
-        {userData.length>0 && (<UserList getUserDetails={actions.getUserDetailsRequest} userData={userData}/>) || "Loading.."}
+        {userData.length>0 && (<UserList getUserDetails={actions.getUserDetailsRequest} userData={userData}/>) || "Loading..."}
         <Pagination currentPage={currentPage} pages={pages} onClick={actions.userListRequest}/>
         <EditUser userDetails={userDetails}/>
       </div>
