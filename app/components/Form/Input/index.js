@@ -22,11 +22,9 @@ const Input = ({
       className={cn("form-control")}
       {...input}
     />
-    {touched && error && (
-      <span>
-        {error}
-      </span>
-    )}
+    {touched &&
+        ((error && <span className="text-danger">{error}</span>))
+      }
   </div>
 )
 

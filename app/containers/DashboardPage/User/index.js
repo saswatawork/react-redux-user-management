@@ -13,6 +13,7 @@ import Button from 'components/Button';
 
 import submit from './submit';
 import UserList from './userList';
+import EditUser from './editUser';
 import makeSelectUser from "./selectors";
 import actionCreators from "./actions";
 import reducer from './reducer';
@@ -45,38 +46,18 @@ export class User extends React.PureComponent {
         data: userData,
         total_pages: pages,
         page: currentPage
-      }
+      },
+      userDetails
     } = this.props;
 
-    return (
-      <div>
-        {userData.length>0 && (<UserList userData={userData}/>) || "Loading.."}
-        <Pagination currentPage={currentPage} pages={pages} onClick={actions.userListRequest}/>
+    console.log('this.props', this.props)
 
-        <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content"></div>
-          </div>
-          <div className="modal-dialog">
-            <div className="modal-content"></div>
-          </div>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal">
-                  <span aria-hidden="true" className="">×   </span>
-                  <span className="sr-only">Close</span>
-                </button>
-                <h4 className="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div className="modal-body"></div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    return (
+      <div className="p-5">
+        <h4>User list</h4>
+        {userData.length>0 && (<UserList getUserDetails={actions.getUserDetailsRequest} userData={userData}/>) || "Loading.."}
+        <Pagination currentPage={currentPage} pages={pages} onClick={actions.userListRequest}/>
+        <EditUser userDetails={userDetails}/>
       </div>
     )
   }

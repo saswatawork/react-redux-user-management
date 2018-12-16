@@ -6,7 +6,10 @@ import { fromJS } from "immutable";
 import {
   USER_LIST_REQUEST,
   USER_LIST_REQUEST_SUCCESS,
-  USER_LIST_REQUEST_FAIL
+  USER_LIST_REQUEST_FAIL,
+  GET_USER_DETAILS_REQUEST,
+  GET_USER_DETAILS_REQUEST_SUCCESS,
+  GET_USER_DETAILS_REQUEST_FAIL
 } from './constants';
 /**
  * Changes the input field of the form
@@ -31,6 +34,24 @@ const actionCreators = {
   userListRequestFail(payload) {
     return {
       type: USER_LIST_REQUEST_FAIL,
+      payload: fromJS(payload)
+    };
+  },
+  getUserDetailsRequest(payload) {
+    return {
+      type: GET_USER_DETAILS_REQUEST,
+      payload: fromJS(payload)
+    };
+  },
+  getUserDetailsRequestSuccess(payload) {
+    return {
+      type: GET_USER_DETAILS_REQUEST_SUCCESS,
+      payload: fromJS(payload)
+    };
+  },
+  getUserDetailsRequestFail(payload) {
+    return {
+      type: GET_USER_DETAILS_REQUEST_FAIL,
       payload: fromJS(payload)
     };
   }

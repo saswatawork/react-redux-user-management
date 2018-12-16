@@ -14,6 +14,7 @@ const Button = props => {
     className,
     disabled,
     onClick,
+    dataDismiss,
     type
   } = props;
 
@@ -25,6 +26,7 @@ const Button = props => {
       onClick={onClick}
       disabled={disabled}
       type={type}
+      data-dismiss={dataDismiss}
     >
       <span>
         {children}
@@ -38,7 +40,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   children: PropTypes.node,
   onClick: PropTypes.func,
-  type: PropTypes.string
+  type: PropTypes.string,
+  dataDismiss: PropTypes.string
 };
 
 Button.defaultProps = {
@@ -46,6 +49,7 @@ Button.defaultProps = {
   disabled: false,
   children: undefined,
   onClick: undefined,
+  dataDismiss: undefined,
   type: "button"
 };
 

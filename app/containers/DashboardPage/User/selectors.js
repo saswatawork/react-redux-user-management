@@ -8,10 +8,14 @@ const makeSelectIsUserRequestSuccess = () =>
 const makeSelectUserList = () =>
   createSelector(selectUser, subState => subState.get('users').toJS());
 
+export const makeSelectUserDetails = () =>
+  createSelector(selectUser, subState => subState.get('userDetails').toJS());
+
 const makeSelectUser = () =>
   createStructuredSelector({
     isUserRequestSuccess: makeSelectIsUserRequestSuccess(),
     userList: makeSelectUserList(),
+    initialValues: makeSelectUserDetails(),
   });
 
 export default makeSelectUser;

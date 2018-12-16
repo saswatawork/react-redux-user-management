@@ -1,6 +1,6 @@
 /**
  *
- * Pagination
+ * User list
  *
  */
 
@@ -10,7 +10,8 @@ import cl from "classnames";
 
 const UserList = props => {
   const {
-    userData
+    userData,
+    getUserDetails
   } = props;
 
   return (
@@ -30,7 +31,8 @@ const UserList = props => {
             <td><img src={avatar} className="img-thumbnail" height="75" width="75" /></td>
             <td>{first_name} {last_name}</td>
             <td>
-              <button className="btn btn-success" data-toggle="modal" data-target="#myModal">Edit</button>
+              <button onClick={() => getUserDetails(id)} className="btn btn-success mx-2" data-toggle="modal" data-target="#myModal">Edit</button>
+              <button className="btn btn-success mx-2" data-target="#myModal">Delete</button>
             </td>
           </tr>
         ))}

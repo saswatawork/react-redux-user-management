@@ -13,7 +13,8 @@ import { fromJS } from 'immutable';
 
 import {
   USER_LIST_REQUEST_SUCCESS,
-  USER_LIST_REQUEST_FAIL
+  USER_LIST_REQUEST_FAIL,
+  GET_USER_DETAILS_REQUEST_SUCCESS
 } from './constants';
 
 // The initial state of the App
@@ -25,6 +26,9 @@ export const initialState = fromJS({
     per_page: 3,
     total: 12,
     total_pages: 4
+  },
+  userDetails: {
+
   }
 });
 
@@ -34,6 +38,9 @@ function userReducer(state = initialState, action) {
       return state
         .set("isUserRequestSuccess", true)
         .set("users", action.payload);
+    case GET_USER_DETAILS_REQUEST_SUCCESS:
+      return state
+        .set("userDetails", action.payload);
     case USER_LIST_REQUEST_FAIL:
       return state.set("isUserRequestSuccess", false);
     default:
