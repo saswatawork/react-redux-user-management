@@ -12,30 +12,33 @@
 import { fromJS } from 'immutable';
 
 import {
-  LOGIN_REQUEST,
-  LOGIN_REQUEST_SUCCESS,
-  LOGIN_REQUEST_FAIL,
-  LOGOUT_USER_SUCCESS
+  USER_LIST_REQUEST_SUCCESS,
+  USER_LIST_REQUEST_FAIL
 } from './constants';
 
 // The initial state of the App
 export const initialState = fromJS({
-  email: '',
-  password: '',
-  isLoggedIn: localStorage.getItem('user') ? true : false
+  isUserRequestSuccess: false,
+  users: {
+    data: [],
+    page: 1,
+    per_page: 3,
+    total: 12,
+    total_pages: 4
+  }
 });
 
-function loginReducer(state = initialState, action) {
+function userReducer(state = initialState, action) {
   switch (action.type) {
-    case LOGIN_REQUEST_SUCCESS:
-      return state.set("isLoggedIn", true);
-    case LOGIN_REQUEST_FAIL:
-      return state.set("isLoggedIn", false);
-    case LOGOUT_USER_SUCCESS:
-      return state.set("isLoggedIn", false);
+    case USER_LIST_REQUEST_SUCCESS:
+      return state
+        .set("isUserRequestSuccess", true)
+        .set("users", action.payload);
+    case USER_LIST_REQUEST_FAIL:
+      return state.set("isUserRequestSuccess", false);
     default:
       return state;
   }
 }
 
-export default loginReducer;
+export default userReducer;

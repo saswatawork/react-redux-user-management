@@ -10,18 +10,18 @@
  */
 
 import React from 'react';
-import LoginForm from './../LoginForm';
-import Header from 'components/Header';
-import RegistrationForm from './../RegistrationForm';
+import LoginForm from 'containers/LoginForm';
 
 /* eslint-disable react/prefer-stateless-function */
-export default class HomePage extends React.PureComponent {
+export default class Header extends React.PureComponent {
   render() {
     return (
-      <div>
-        <Header />
-        <RegistrationForm />
-      </div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-between">
+        <div>
+          <a className="navbar-brand" href="#">FE Code Challange</a>
+        </div>
+        <LoginForm />
+      </nav>
     );
   }
 }

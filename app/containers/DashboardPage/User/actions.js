@@ -4,11 +4,9 @@
  */
 import { fromJS } from "immutable";
 import {
-  LOGIN_REQUEST,
-  LOGIN_REQUEST_SUCCESS,
-  LOGIN_REQUEST_FAIL,
-  LOGOUT_USER,
-  LOGOUT_USER_SUCCESS
+  USER_LIST_REQUEST,
+  USER_LIST_REQUEST_SUCCESS,
+  USER_LIST_REQUEST_FAIL
 } from './constants';
 /**
  * Changes the input field of the form
@@ -18,32 +16,22 @@ import {
  * @return {object}    An action object with a type of CHANGE_USERNAME
  */
 const actionCreators = {
-  loginRequest(payload) {
+  userListRequest(payload) {
     return {
-      type: LOGIN_REQUEST,
+      type: USER_LIST_REQUEST,
       payload: fromJS(payload)
     };
   },
-  loginRequestSuccess(payload) {
+  userListRequestSuccess(payload) {
     return {
-      type: LOGIN_REQUEST_SUCCESS,
+      type: USER_LIST_REQUEST_SUCCESS,
       payload: fromJS(payload)
     };
   },
-  loginRequestFail(payload) {
+  userListRequestFail(payload) {
     return {
-      type: LOGIN_REQUEST_FAIL,
+      type: USER_LIST_REQUEST_FAIL,
       payload: fromJS(payload)
-    };
-  },
-  logOutUser() {
-    return {
-      type: LOGOUT_USER
-    };
-  },
-  logOutUserSuccess() {
-    return {
-      type: LOGOUT_USER_SUCCESS
     };
   }
 }

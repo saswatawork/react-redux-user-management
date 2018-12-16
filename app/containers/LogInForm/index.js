@@ -17,7 +17,6 @@ import makeSelectLoginForm from "./selectors";
 import actionCreators from "./actions";
 import reducer from './reducer';
 import validate from './validate';
-import './style.css';
 import saga from './saga';
 
 export class LogInForm extends React.PureComponent {
@@ -37,6 +36,7 @@ export class LogInForm extends React.PureComponent {
 
   render() {
     const {
+      actions,
       error,
       form,
       handleSubmit,
@@ -45,27 +45,41 @@ export class LogInForm extends React.PureComponent {
       submitting,
       username,
       password,
+      currentLocation,
       isLoggedIn
     } = this.props;
-    console.log('this.props', this.props);
 
     return (
       <div>
-        {isLoggedIn || localStorage.getItem('user') && <Redirect to="dashboard" />}
-        <form onSubmit={handleSubmit} className="form-inline my-2 my-lg-0">
-          <Field name="email" component={Input} placeholder="Email" className="mr-sm-2" />
-          <Field name="password" type="password" component={Input} placeholder="Password" className="mr-sm-2" />
-          {error && (
-            <span className="text-danger">
-              <strong>{error}</strong>
-            </span>
-          )}
-          <div className="form-group">
-            <Button type="submit" className="btn btn-outline-light my-2 my-sm-0" disabled={submitting || error}>
-              Log In
-            </Button>
+        {(isLoggedIn) &&
+          (
+            <div>
+              <Redirect to="dashboard"/>
+              <Button type="link" className="btn btn-outline-light my-2 my-sm-0" onClick={actions.logOutUser}>
+                Log Out
+              </Button>
+            </div>
+          ) || (
+          <div>
+            {currentLocation!='/' && <Redirect to="/" /> }
+            <form onSubmit={handleSubmit} className="form-inline my-2 my-lg-0">
+              <Field name="email" component={Input} placeholder="Email" className="mr-sm-2" />
+              <Field name="password" type="password" component={Input} placeholder="Password" className="mr-sm-2" />
+              {error && (
+                <span className="text-danger">
+                  <strong>{error}</strong>
+                </span>
+              )}
+              <div className="form-group">
+                <Button type="submit" className="btn btn-outline-light my-2 my-sm-0">
+                  Log In
+                </Button>
+              </div>
+            </form>
           </div>
-        </form>
+        )}
+
+
       </div>
     )
   }

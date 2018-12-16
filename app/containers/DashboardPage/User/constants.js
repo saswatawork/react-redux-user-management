@@ -9,8 +9,6 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
- export const LOGIN_REQUEST = 'app/LogInForm/LOGIN_REQUEST';
- export const LOGIN_REQUEST_SUCCESS = 'app/LogInForm/LOGIN_REQUEST_SUCCESS';
- export const LOGIN_REQUEST_FAIL = 'app/LogInForm/LOGIN_REQUEST_FAIL';
- export const LOGOUT_USER = 'app/LogInForm/LOGOUT_USER';
- export const LOGOUT_USER_SUCCESS = 'app/LogInForm/LOGOUT_USER_SUCCESS';
+ export const USER_LIST_REQUEST = 'app/User/USER_LIST_REQUEST';
+ export const USER_LIST_REQUEST_SUCCESS = 'app/User/USER_LIST_REQUEST_SUCCESS';
+ export const USER_LIST_REQUEST_FAIL = 'app/User/USER_LIST_REQUEST_FAIL';

@@ -1,7 +1,7 @@
 import {browserHistory} from 'react-router'
-import {take, call, put, fork, race} from 'redux-saga/effects';
+import {take, takeEvery, call, put, fork, race} from 'redux-saga/effects';
 import actionCreators from './actions';
-import { LOGIN_REQUEST } from './constants';
+import { LOGIN_REQUEST, LOGOUT_USER } from './constants';
 
 import {CONFIG} from './../App/constants';
 
@@ -23,14 +23,13 @@ function loginApi(data) {
 /**
  * Log in saga
  */
-export function * login () {
+export function * login ({payload}) {
     try {
-        const request = yield take(LOGIN_REQUEST);
-        const data = request.payload.toJS();
+        const data = payload.toJS();
         const user = yield call(loginApi, data);
 
         if(user.token){
-          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('user', user.token);
           yield put(actionCreators.loginRequestSuccess(user));
         }
     }
@@ -39,8 +38,21 @@ export function * login () {
     }
 }
 
+export function * logout () {
+    try {
+        const request = yield take(LOGOUT_USER);
+        if(request){
+          localStorage.removeItem('user');
+          yield put(actionCreators.logOutUserSuccess());
+        }
+    }
+    catch(error) {
+    }
+}
+
 export default function * root () {
-  yield fork(login)
+  yield takeEvery(LOGIN_REQUEST, login)
+  yield takeEvery(LOGOUT_USER, logout)
 }
 
 // Little helper function to abstract going to different pages
