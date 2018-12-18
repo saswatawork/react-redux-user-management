@@ -5,7 +5,10 @@ const selectUser = state => state.get('user');
 const makeSelectIsUserRequestSuccess = () =>
   createSelector(selectUser, subState => subState.get('isUserRequestSuccess'));
 
-const makeSelectUserList = () =>
+export const makeSelectUserSortedOrder = () =>
+  createSelector(selectUser, subState => subState.get('userSortedOrder'));  
+
+export const makeSelectUserList = () =>
   createSelector(selectUser, subState => subState.get('users').toJS());
 
 export const makeSelectUserDetails = () =>
@@ -16,6 +19,7 @@ const makeSelectUser = () =>
     isUserRequestSuccess: makeSelectIsUserRequestSuccess(),
     userList: makeSelectUserList(),
     initialValues: makeSelectUserDetails(),
+    userSortedOrder: makeSelectUserSortedOrder()
   });
 
 export default makeSelectUser;

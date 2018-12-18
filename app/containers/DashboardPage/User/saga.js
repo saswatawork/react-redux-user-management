@@ -1,7 +1,15 @@
-import {take,takeEvery, call, put, fork, race} from 'redux-saga/effects';
+import {takeEvery, call, put, select} from 'redux-saga/effects';
 import actionCreators from './actions';
-import { USER_LIST_REQUEST, GET_USER_DETAILS_REQUEST } from './constants';
-
+import _ from 'lodash';
+import { 
+  USER_LIST_REQUEST, 
+  GET_USER_DETAILS_REQUEST, 
+  GET_SORTED_USER_REQUEST
+} from './constants';
+import { 
+  makeSelectUserList,
+  makeSelectUserSortedOrder
+} from './selectors';
 import {CONFIG} from './../../App/constants';
 
 function userApi(currentPage) {
@@ -15,7 +23,7 @@ function userApi(currentPage) {
 
 export function * getUserList ({payload}) {
   try {
-    const currentPage = payload ? payload : 1;
+    const currentPage = payload || 1;
     const user = yield call(userApi, currentPage);
     yield put(actionCreators.userListRequestSuccess(user));
   }
@@ -36,7 +44,7 @@ function userDetailsApi(userId) {
 
 export function * getUserDetails({payload}) {
   try {
-    const userId = payload ? payload : 1;
+    const userId = payload || 1;
     const userDetails = yield call(userDetailsApi, userId);
     if(userDetails.data)
       yield put(actionCreators.getUserDetailsRequestSuccess(userDetails.data));
@@ -46,7 +54,21 @@ export function * getUserDetails({payload}) {
   }
 }
 
+export function * getSortedUser() {
+  try {
+    const { data } = yield select(makeSelectUserList());
+    const orderBy = yield select(makeSelectUserSortedOrder());
+    const userData = _.orderBy(data, ['first_name'], [orderBy]);
+    if(userData){
+      yield put(actionCreators.getSortedUserRequestSuccess(userData, userData));
+    }
+  }
+  catch(error) {
+  }
+}
+
 export default function * root () {
   yield takeEvery(USER_LIST_REQUEST, getUserList)
   yield takeEvery(GET_USER_DETAILS_REQUEST, getUserDetails)
+  yield takeEvery(GET_SORTED_USER_REQUEST, getSortedUser)
 }

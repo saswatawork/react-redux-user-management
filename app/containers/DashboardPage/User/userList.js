@@ -5,13 +5,14 @@
  */
 
 import React from "react";
-import PropTypes from "prop-types";
-import cl from "classnames";
+import Button from 'components/Button';
 
 const UserList = props => {
   const {
     userData,
-    getUserDetails
+    getUserDetails,
+    getSortedUser,
+    userSortedOrder
   } = props;
 
   return (
@@ -20,7 +21,7 @@ const UserList = props => {
         <tr>
           <th>No</th>
           <th>Avatar</th>
-          <th>Name</th>
+          <th>Name <Button type="link" className="fas fa-sort" onClick={() => getSortedUser(userSortedOrder==='asc' ? 'desc' : 'asc')} /></th>
           <th>Edit</th>
         </tr>
       </thead>
