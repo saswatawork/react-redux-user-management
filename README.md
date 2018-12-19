@@ -1,6 +1,6 @@
 # React redux user management
 
-This user management contains all the building blocks needed to build the FE code challenge. In this project all the latest FE technologies like latest react 16,es6-7 features, redux for state management, Redux form for managing form with redux, redux-saga for maintaining side effect free code, Immutable.js to provide better performance, Reselect for fast select as well as caching are used.
+This user management contains all the building blocks needed to build a modern full responsive website. In this project all the latest FE technologies like latest react 16,es6-7 features, redux for state management, Redux form for managing form with redux, redux-saga for maintaining side effect free code, Immutable.js to provide better performance, Reselect for fast select as well as caching are used.
 
 ## Setup
 
@@ -35,7 +35,7 @@ IMPORTANT: This section describes customizations made on top of react-boilerplat
 
 ### Design Idea
 
-In the entire project I tried to follow Atomic Design principle as much I can. Atomic design is methodology for creating design systems. In this methodology entire page is break into templates, templates into organism, organisms into molecules and Molecules into Atoms which we can not break anymore. For more details please visit {http://bradfrost.com/blog/post/atomic-web-design/}. Though due to the lack of time I was not able follow this principal fully but that was the idea.
+In the entire project I tried to follow Atomic Design principle as much I can. Atomic design is methodology for creating design systems. In this methodology entire page is break into templates, templates into organism, organisms into molecules and Molecules into Atoms which we can not break anymore. For more details please visit {http://bradfrost.com/blog/post/atomic-web-design/}.
 
 ## Technology stack
 
