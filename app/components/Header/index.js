@@ -18,7 +18,9 @@ export default class Header extends React.PureComponent {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-between">
         <div>
-          <a className="navbar-brand" href="#">FE Code Challange</a>
+          <a className="navbar-brand" href="#">
+            User Management
+          </a>
         </div>
         <LoginForm />
       </nav>

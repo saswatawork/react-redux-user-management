@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import bindActionCreators from "utils/bindActionCreators";
+import bindActionCreators from 'utils/bindActionCreators';
 import Pagination from 'components/Pagination';
 
 import UserList from './userList';
 import EditUser from './editUser';
-import makeSelectUser from "./selectors";
-import actionCreators from "./actions";
+import makeSelectUser from './selectors';
+import actionCreators from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -19,16 +19,17 @@ export class User extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.shape({
       userListRequest: PropTypes.func.isRequired,
-      getSortedUserRequest: PropTypes.func.isRequired
+      getSortedUserRequest: PropTypes.func.isRequired,
+      getUserDetailsRequest: PropTypes.func.isRequired,
     }),
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
   };
 
   static defaultProps = {
     submitting: false,
     submitSucceeded: false,
     reset: _.noop,
-    form: undefined
+    form: undefined,
   };
 
   componentDidMount() {
@@ -38,28 +39,30 @@ export class User extends React.PureComponent {
   render() {
     const {
       actions,
-      userList: {
-        data: userData,
-        total_pages: pages,
-        page: currentPage
-      },
-      userDetails,
-      userSortedOrder
+      userList: { data: userData, total_pages: pages, page: currentPage },
+      userSortedOrder,
     } = this.props;
 
     return (
       <div className="p-5">
         <h4>User list</h4>
-        {userData.length>0 && 
-        (<UserList 
-          userSortedOrder={userSortedOrder} 
-          getSortedUser={actions.getSortedUserRequest} 
-          getUserDetails={actions.getUserDetailsRequest} 
-          userData={userData}/>) || "Loading..."}
-        <Pagination currentPage={currentPage} pages={pages} onClick={actions.userListRequest}/>
-        <EditUser userDetails={userDetails}/>
+        {(userData.length > 0 && (
+          <UserList
+            userSortedOrder={userSortedOrder}
+            getSortedUser={actions.getSortedUserRequest}
+            getUserDetails={actions.getUserDetailsRequest}
+            userData={userData}
+          />
+        )) ||
+          'Loading...'}
+        <Pagination
+          currentPage={currentPage}
+          pages={pages}
+          onClick={actions.userListRequest}
+        />
+        <EditUser {...this.props} />
       </div>
-    )
+    );
   }
 }
 
@@ -69,7 +72,7 @@ const mapStateToProps = makeSelectUser();
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps(actionCreators)
+  mapDispatchToProps(actionCreators),
 );
 
 const withReducer = injectReducer({ key: 'user', reducer });

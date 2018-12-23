@@ -2,7 +2,7 @@
  * User Actions
  *
  */
-import { fromJS } from "immutable";
+import { fromJS } from 'immutable';
 import {
   USER_LIST_REQUEST,
   USER_LIST_REQUEST_SUCCESS,
@@ -11,58 +11,70 @@ import {
   GET_USER_DETAILS_REQUEST_SUCCESS,
   GET_USER_DETAILS_REQUEST_FAIL,
   GET_SORTED_USER_REQUEST,
-  GET_SORTED_USER_REQUEST_SUCCESS
+  GET_SORTED_USER_REQUEST_SUCCESS,
+  OPEN_EDIT_USER_MODAL,
+  CLOSE_EDIT_USER_MODAL,
 } from './constants';
 
 const actionCreators = {
   userListRequest(payload) {
     return {
       type: USER_LIST_REQUEST,
-      payload: fromJS(payload)
+      payload: fromJS(payload),
     };
   },
   userListRequestSuccess(payload) {
     return {
       type: USER_LIST_REQUEST_SUCCESS,
-      payload: fromJS(payload)
+      payload: fromJS(payload),
     };
   },
   userListRequestFail(payload) {
     return {
       type: USER_LIST_REQUEST_FAIL,
-      payload: fromJS(payload)
+      payload: fromJS(payload),
     };
   },
   getUserDetailsRequest(payload) {
     return {
       type: GET_USER_DETAILS_REQUEST,
-      payload: fromJS(payload)
+      payload: fromJS(payload),
     };
   },
   getUserDetailsRequestSuccess(payload) {
     return {
       type: GET_USER_DETAILS_REQUEST_SUCCESS,
-      payload: fromJS(payload)
+      payload: fromJS(payload),
     };
   },
   getUserDetailsRequestFail(payload) {
     return {
       type: GET_USER_DETAILS_REQUEST_FAIL,
-      payload: fromJS(payload)
+      payload: fromJS(payload),
     };
   },
-  getSortedUserRequest(payload){
+  closeEditUserModal() {
+    return {
+      type: CLOSE_EDIT_USER_MODAL,
+    };
+  },
+  openEditUserModal() {
+    return {
+      type: OPEN_EDIT_USER_MODAL,
+    };
+  },
+  getSortedUserRequest(payload) {
     return {
       type: GET_SORTED_USER_REQUEST,
-      payload: fromJS(payload)
-    }
+      payload: fromJS(payload),
+    };
   },
-  getSortedUserRequestSuccess(payload){
+  getSortedUserRequestSuccess(payload) {
     return {
       type: GET_SORTED_USER_REQUEST_SUCCESS,
-      payload: fromJS(payload)
-    }
-  }
-}
+      payload: fromJS(payload),
+    };
+  },
+};
 
 export default actionCreators;
